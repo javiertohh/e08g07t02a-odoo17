@@ -33,7 +33,7 @@ stages:
           - task: SSH@0
             displayName: "Sync Code - Staging"
             inputs:
-              sshEndpoint: 'ssh-odoo17'
+              sshEndpoint: 'ssh-odoo17-staging'
               runOptions: commands
               commands: |
                 set -e
@@ -52,7 +52,7 @@ stages:
           - task: SSH@0
             displayName: "Run Update Script - Staging"
             inputs:
-              sshEndpoint: 'ssh-odoo17'
+              sshEndpoint: 'ssh-odoo17-staging'
               runOptions: commands
               commands: |
                 echo "$(STAGINGUSERPASSWORD)" | sudo -S -p '' chmod +x $(updateScript)
