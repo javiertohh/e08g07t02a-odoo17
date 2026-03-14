@@ -8,9 +8,9 @@ pool:
   name: Default
 
 variables:
-  repoUrl: 'https://github.com/souravb-smu/odoo17.git'
-  updateScript: '/home/azureuser/deploy-temp/update_code.sh'
-  stagePath: '/home/azureuser/'
+  repoUrl: 'https://github.com/javiertohh/e08g07t02a-odoo17.git'
+  updateScript: '/home/javier/deploy-temp/update_code.sh'
+  stagePath: '/home/javier/'
 
 stages:
 
