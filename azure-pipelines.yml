@@ -103,7 +103,7 @@ stages:
                 set -e
                 cd $(stagePath)/deploy-temp/
                 echo "Uncompressing odoo.sql.gz..."
-                gunzip -c $(tempDeploy)/odoo.sql.gz > $(tempDeploy)/odoo.sql
+                gunzip -c odoo.sql.gz > odoo.sql
                 echo "Uncompress complete: $(stagePath)/deploy-temp/odoo.sql"
 
           # Restore Database
