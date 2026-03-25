@@ -9,8 +9,8 @@ pool:
 
 variables:
   repoUrl: 'https://github.com/javiertohh/e08g07t02a-odoo17.git'
-  updateScript: '/home/javier/deploy-temp/update_code.sh'
-  stagePath: '/home/javier/'
+  updateScript: '/home/azure/deploy-temp/update_code.sh'
+  stagePath: '/home/azure/'
 
 stages:
 
