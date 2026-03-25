@@ -8,7 +8,7 @@ pool:
   name: Default
 
 variables:
-  repoUrl: 'https://github.com/javiertohh/e08g07t02a-odoo17.git'
+  repoUrl: 'https://github.com/javiertohh/e08g07t02a-odoo17'
   updateScript: '/home/azure/deploy-temp/update_code.sh'
   stagePath: '/home/azure/'
 
@@ -39,14 +39,10 @@ stages:
                 set -e
                 echo "Deploying branch: $(Build.SourceBranchName)"
                 cd $(stagePath)
-                # remove only old code inside deploy-temp (keep your .sql.gz)
-                rm -rf deploy-temp/*-odoo17
+                rm -rf deploy-temp *-odoo17
 
-                # clone fresh repo
-                git clone -b master $(repoUrl) --quiet
-
-                # move into deploy-temp
-                mv *-odoo17 deploy-temp/
+                git clone -b Staging $(repoUrl) --quiet
+                mv *-odoo17 deploy-temp
 
                 cd deploy-temp
                 rm -f .DS_Store
@@ -88,14 +84,10 @@ stages:
                 set -e
                 echo "Deploying branch: $(Build.SourceBranchName)"
                 cd $(stagePath)
-                # remove only old code inside deploy-temp (keep your .sql.gz)
-                rm -rf deploy-temp/*-odoo17
+                rm -rf deploy-temp *-odoo17
 
-                # clone fresh repo
                 git clone -b master $(repoUrl) --quiet
-
-                # move into deploy-temp
-                mv *-odoo17 deploy-temp/
+                mv *-odoo17 deploy-temp
 
                 cd deploy-temp
                 rm -f .DS_Store
@@ -111,7 +103,7 @@ stages:
                 set -e
                 cd $(stagePath)/deploy-temp/
                 echo "Uncompressing odoo.sql.gz..."
-                gunzip -c odoo.sql.gz > odoo.sql
+                gunzip -c $(tempDeploy)/odoo.sql.gz > $(tempDeploy)/odoo.sql
                 echo "Uncompress complete: $(stagePath)/deploy-temp/odoo.sql"
 
           # Restore Database
