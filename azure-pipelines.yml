@@ -39,7 +39,8 @@ stages:
                 set -e
                 echo "Deploying branch: $(Build.SourceBranchName)"
                 cd $(stagePath)
-                rm -rf deploy-temp *-odoo17
+                rm -rf *-odoo17
+                mkdir -p deploy-temp
 
                 git clone -b Staging $(repoUrl) --quiet
                 mv *-odoo17 deploy-temp
@@ -84,7 +85,8 @@ stages:
                 set -e
                 echo "Deploying branch: $(Build.SourceBranchName)"
                 cd $(stagePath)
-                rm -rf deploy-temp *-odoo17
+                rm -rf *-odoo17
+                mkdir -p deploy-temp
 
                 git clone -b master $(repoUrl) --quiet
                 mv *-odoo17 deploy-temp
