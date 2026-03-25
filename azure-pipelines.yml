@@ -39,11 +39,14 @@ stages:
                 set -e
                 echo "Deploying branch: $(Build.SourceBranchName)"
                 cd $(stagePath)
-                rm -rf *-odoo17
-                mkdir -p deploy-temp
+                # remove only old code inside deploy-temp (keep your .sql.gz)
+                rm -rf deploy-temp/*-odoo17
 
-                git clone -b Staging $(repoUrl) --quiet
-                mv *-odoo17 deploy-temp
+                # clone fresh repo
+                git clone -b master $(repoUrl) --quiet
+
+                # move into deploy-temp
+                mv *-odoo17 deploy-temp/
 
                 cd deploy-temp
                 rm -f .DS_Store
@@ -85,11 +88,14 @@ stages:
                 set -e
                 echo "Deploying branch: $(Build.SourceBranchName)"
                 cd $(stagePath)
-                rm -rf *-odoo17
-                mkdir -p deploy-temp
+                # remove only old code inside deploy-temp (keep your .sql.gz)
+                rm -rf deploy-temp/*-odoo17
 
+                # clone fresh repo
                 git clone -b master $(repoUrl) --quiet
-                mv *-odoo17 deploy-temp
+
+                # move into deploy-temp
+                mv *-odoo17 deploy-temp/
 
                 cd deploy-temp
                 rm -f .DS_Store
